@@ -57,7 +57,12 @@ input {
   font-size: calc(10px + 2vmin);
   color: rgb(221, 212, 86);
 }
+.HomeButton {
+display: flex;
+margin: 20px;
+text-align: center;
 
+}
 .App-Logo {
     display: inline;
   animation: App-logo-spin infinite 20s linear;
