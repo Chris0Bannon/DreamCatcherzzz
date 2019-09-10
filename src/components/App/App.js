@@ -18,6 +18,7 @@ import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 
 import './App.css';
+import Header from '../Header/Header';
 
 class App extends Component {
   componentDidMount () {
@@ -27,14 +28,15 @@ class App extends Component {
   render() {
     return (
       <Router>
+        <Header />
         <div>
-          <Nav />
+          {/* <Nav /> */}
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
             <Redirect exact from="/" to="/home" />
             {/* Visiting localhost:3000/about will show the about page.
             This is a route anyone can see, no login necessary */}
-            <Route
+            <ProtectedRoute
               exact
               path="/about"
               component={AboutPage}
