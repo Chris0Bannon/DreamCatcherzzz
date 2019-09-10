@@ -10,6 +10,7 @@ const AboutPage = () => (
     <div>
       <p>
         This about page is for anyone to read!
+        Here is some cool sleepy time things!
       </p>
     </div>
   </div>
