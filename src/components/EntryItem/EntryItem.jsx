@@ -20,9 +20,12 @@ getHabitPrompts = id => {
 render(){
 
 
-        return(
+        return (
+          <div>
             <h1>Hello to Entry Item</h1>
-        )
+            <p>{this.props.reduxStore.habitPrompt.habit_prompt_text}</p>
+          </div>
+        );
     }
 }
 
