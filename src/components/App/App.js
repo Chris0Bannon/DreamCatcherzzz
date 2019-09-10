@@ -14,6 +14,8 @@ import InfoPage from '../InfoPage/InfoPage';
 import './App.css';
 import Header from '../Header/Header';
 import {createMuiTheme, MuiThemeProvider} from '@material-ui/core/styles';
+import DailyEntry from '../DailyEntry/DailyEntry';
+import Review from '../Review/Review';
 
 const theme = createMuiTheme({
   palette: {
@@ -68,6 +70,14 @@ class App extends Component {
               path="/info"
               component={InfoPage}
             />
+            <ProtectedRoute
+           path="/dailyEntry"
+           component={DailyEntry}
+           />
+           <ProtectedRoute
+           path="/review"
+           component = {Review}
+           />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
           </Switch>
