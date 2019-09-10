@@ -16,6 +16,8 @@ import Header from '../Header/Header';
 import {createMuiTheme, MuiThemeProvider} from '@material-ui/core/styles';
 import DailyEntry from '../DailyEntry/DailyEntry';
 import Review from '../Review/Review';
+import EntryItem from '../EntryItem/EntryItem';
+
 
 const theme = createMuiTheme({
   palette: {
@@ -73,6 +75,10 @@ class App extends Component {
             <ProtectedRoute
            path="/dailyEntry"
            component={DailyEntry}
+           />
+           <ProtectedRoute
+           path = "/entry/:id"
+           component = {EntryItem}
            />
            <ProtectedRoute
            path="/review"
