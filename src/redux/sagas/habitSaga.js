@@ -8,7 +8,7 @@ function * fetchHabitPrompts(action){
             withCredentials: true,
         };
        
-        const response = yield axios.get(`/api/habit_prompts/${action.payload}`, config);
+        const response = yield axios.get(`/api/habitPrompts/${action.payload}`, config);
         yield put ({type: 'SET_HABIT_PROMPTS', payload: response.data});
     }catch(error) {
         console.log('Habit prompt get request failed', error);

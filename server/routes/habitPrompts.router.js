@@ -1,7 +1,7 @@
 const express = require('express');
 const pool = require('../modules/pool');
 
-const router = express.Router()
+const router = express.Router();
 
 router.get(`/:id`, (req,res) => {
     let habit = req.params.id
@@ -15,3 +15,5 @@ router.get(`/:id`, (req,res) => {
         res.sendStatus(500);
     });
 });
+
+module.exports = router;
