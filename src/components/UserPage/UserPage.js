@@ -15,10 +15,10 @@ const UserPage = (props) => (
     <Button onClick={() => props.history.push('/about')} variant= "contained" color="primary">ABOUT</Button>
     </div>
     <div className="HomeButton">
-    <Button  variant="contained" color="primary">DAILY ENTRY</Button>
+    <Button onClick={() => props.history.push('/dailyEntry')} variant="contained" color="primary">DAILY ENTRY</Button>
     </div>
     <div className="HomeButton">
-    <Button  variant="contained" color="primary">REVIEW RECENT</Button>
+    <Button onClick={() => props.history.push('/review')} variant="contained" color="primary">REVIEW RECENT</Button>
     </div>
     <div className="HomeButton">
     <Button  variant="contained" color="primary"
