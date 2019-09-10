@@ -15,8 +15,22 @@ function * fetchHabitPrompts(action){
     }
 }
 
+function * addHabitResponse(action){
+    try{
+        const config = {
+            headers: { 'Content-Type': 'application/json' },
+            withCredentials: true,
+        };
+        yield axios.post(`/api/habitPrompts/`, {user_response: action.payload}, config)
+    }catch(error) {
+        console.log('error in ADD_HABIT_RESPONSE', error);
+        
+    }
+}
+
 function * habitPromptSaga(){
     yield takeLatest('FETCH_HABIT_PROMPTS', fetchHabitPrompts);
+    yield takeLatest('ADD_HABIT_RESPONSES', addHabitResponse)
 }
 
 export default habitPromptSaga;
