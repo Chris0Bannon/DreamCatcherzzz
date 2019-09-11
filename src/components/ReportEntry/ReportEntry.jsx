@@ -19,7 +19,7 @@ class ReportEntry extends Component {
       type: "FETCH_SELF_REPORT_HABIT_PROMPTS",
       payload: this.props.match.params.id
     };
-    this.prop.dispatch(action);
+    this.props.dispatch(action);
   };
 
   getNextSelfReportPrompt = id => {
@@ -54,7 +54,7 @@ class ReportEntry extends Component {
     return (
       <div>
         {this.props.reduxStore.selfReportPrompt == "" &&
-          this.props.push("/dailyReview")}
+          this.props.history.push("/dailyReview")}
         <h1>Welcome to the self report section</h1>
         <p>{this.props.reduxStore.selfReportPrompt.self_report_prompt_text}</p>
         <form onSubmit={this.nextHandler}>
