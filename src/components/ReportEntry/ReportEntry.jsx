@@ -5,32 +5,26 @@ import Radio from "@material-ui/core/Radio";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Button from "@material-ui/core/Button";
 
-class EntryItem extends Component {
+class ReportEntry extends Component {
   state = {
     value: 0
   };
 
   componentDidMount = () => {
-    console.log("in component did componentDidMount");
-
-    this.getCurrentHabitPrompts();
-    // if(this.props.reduxStore.habitPrompt == ""){
-    //     this.props.history.push('/transition')
-    // }
+    this.getCurrentSelfReportPrompt();
   };
 
-  getCurrentHabitPrompts = id => {
+  getCurrentSelfReportPrompt = id => {
     let action = {
-      type: "FETCH_HABIT_PROMPTS",
+      type: "FETCH_SELF_REPORT_HABIT_PROMPTS",
       payload: this.props.match.params.id
     };
     this.props.dispatch(action);
   };
-  getNextHabitPrompts = id => {
-    console.log("in NEXT habit getter");
 
+  getNextSelfReportPrompt = id => {
     let action = {
-      type: "FETCH_HABIT_PROMPTS",
+      type: "FETCH_SELF_REPORT_HABIT_PROMPTS",
       payload: ++this.props.match.params.id
     };
     this.props.dispatch(action);
@@ -38,21 +32,19 @@ class EntryItem extends Component {
 
   nextHandler = event => {
     event.preventDefault();
-    console.log("youclicked a button");
 
     if (this.state.value === 0) {
-      return alert("you gotta do something");
+      return alert("do a thing dummy");
     } else {
       this.props.dispatch({
-        type: "ADD_HABIT_RESPONSE",
+        type: "ADD_SELF_REPORT",
         payload: this.state
       });
-      this.getNextHabitPrompts();
+      this.getNextSelfReportPrompt();
     }
   };
 
   handleChange = event => {
-    console.log("you changed it in the form too ", event.target.value);
     this.setState({
       value: event.target.value
     });
@@ -61,10 +53,10 @@ class EntryItem extends Component {
   render() {
     return (
       <div>
-        {this.props.reduxStore.habitPrompt == "" &&
-          this.props.history.push("/transition")}
-        <h1>Hello to Entry Item</h1>
-        <p>{this.props.reduxStore.habitPrompt.habit_prompt_text}</p>
+        {this.props.reduxStore.selfReportPrompt == "" &&
+          this.props.history.push("/dailyReview")}
+        <h1>Welcome to the self report section</h1>
+        <p>{this.props.reduxStore.selfReportPrompt.self_report_prompt_text}</p>
         <form onSubmit={this.nextHandler}>
           <RadioGroup
             aria-label="Rating"
@@ -104,4 +96,4 @@ const mapStoreToProps = reduxStore => {
   };
 };
 
-export default connect(mapStoreToProps)(EntryItem);
+export default connect(mapStoreToProps)(ReportEntry);

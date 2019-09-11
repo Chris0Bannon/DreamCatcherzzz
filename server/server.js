@@ -11,6 +11,7 @@ const passport = require('./strategies/user.strategy');
 // Route includes
 const userRouter = require('./routes/user.router');
 const habitPromptRouter = require('./routes/habitPrompts.router.js');
+const selfReportPromptRouter = require('./routes/selfReportPrompts.router.js');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -26,6 +27,7 @@ app.use(passport.session());
 /* Routes */
 app.use('/api/user', userRouter);
 app.use('/api/habitPrompts', habitPromptRouter);
+app.use('/api/selfReportPrompts', selfReportPromptRouter);
 
 // Serve static files
 app.use(express.static('build'));
