@@ -19,6 +19,7 @@ import Review from '../Review/Review';
 import EntryItem from '../EntryItem/EntryItem';
 import TransitionSlide from '../TransitionSlide/TransitionSlide';
 import ReportEntry from '../ReportEntry/ReportEntry';
+import DailyEntryReview from '../DailyEntryReview/DailyEntryReview';
 
 const theme = createMuiTheme({
   palette: {
@@ -84,6 +85,10 @@ class App extends Component {
            <ProtectedRoute
            path = "/reports/:id"
            component = {ReportEntry}
+           />
+           <ProtectedRoute
+           path = "/dailyReview"
+           component = {DailyEntryReview}
            />
            <ProtectedRoute
            path="/review"
