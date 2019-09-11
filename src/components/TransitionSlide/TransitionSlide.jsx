@@ -6,7 +6,7 @@ class TransitionSlide extends Component {
         return(
         <div>
             <h1>WELCOME TO THE TransitionSlide!!</h1>
-            <Button onClick={() => this.props.history.push('/reports')} variant = "contained" color = "primary">Continue</Button>
+            <Button onClick={() => this.props.history.push('/reports/1')} variant = "contained" color = "primary">Continue</Button>
         </div>
         )
     }
