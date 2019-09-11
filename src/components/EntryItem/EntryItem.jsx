@@ -13,20 +13,34 @@ class EntryItem extends Component {
         value: 0,
     }
  
-componentDidMount = () => {
-    this.getHabitPrompts();
+componentDidMount = () => {  
+    console.log('in component did componentDidMount');
+    
+    this.getCurrentHabitPrompts();
+    // if(this.props.reduxStore.habitPrompt == ""){
+    //     this.props.history.push('/transition')
+    // }
 };
 
-getHabitPrompts = id => {
+getCurrentHabitPrompts = id => {
     let action = {
         type:'FETCH_HABIT_PROMPTS',
         payload: this.props.match.params.id
     };
     this.props.dispatch(action);
 }
+getNextHabitPrompts = id => {
+    console.log('in NEXT habit getter');
+    
+    let action = {
+        type: 'FETCH_HABIT_PROMPTS',
+        payload: ++ this.props.match.params.id
+    };
+    this.props.dispatch(action)
+}
 
 nextHandler = event => {
-   
+   event.preventDefault();
     console.log('youclicked a button');
     
     if (this.state.value === 0){
@@ -36,8 +50,10 @@ nextHandler = event => {
             type: 'ADD_HABIT_RESPONSE',
             payload: this.state
         });
-        this.props.history.push(`/entry/${++this.props.match.params.id}`)
+        this.getNextHabitPrompts()
+      
     }
+    
 }
 
 handleChange = event => {
@@ -51,8 +67,13 @@ handleChange = event => {
 render(){
 
 
-        return (
+        return (  
           <div>
+              {this.props.reduxStore.habitPrompt == ""  && 
+            
+            
+          this.props.history.push("/transition")
+        }
             <h1>Hello to Entry Item</h1>
             <p>{this.props.reduxStore.habitPrompt.habit_prompt_text}</p>
             <form onSubmit={this.nextHandler}>

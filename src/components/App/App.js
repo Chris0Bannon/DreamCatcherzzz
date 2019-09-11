@@ -17,6 +17,7 @@ import {createMuiTheme, MuiThemeProvider} from '@material-ui/core/styles';
 import DailyEntry from '../DailyEntry/DailyEntry';
 import Review from '../Review/Review';
 import EntryItem from '../EntryItem/EntryItem';
+import TransitionSlide from '../TransitionSlide/TransitionSlide';
 
 
 const theme = createMuiTheme({
@@ -83,6 +84,10 @@ class App extends Component {
            <ProtectedRoute
            path="/review"
            component = {Review}
+           />
+           <ProtectedRoute
+           path="/transition"
+           component = {TransitionSlide}
            />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
