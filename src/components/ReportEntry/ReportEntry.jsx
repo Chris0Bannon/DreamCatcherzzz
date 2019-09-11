@@ -6,23 +6,94 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Button from "@material-ui/core/Button";
 
 class ReportEntry extends Component {
+  state = {
+    value: 0
+  };
 
-render(){
+  componentDidMount = () => {
+    this.getCurrentSelfReportPrompt();
+  };
 
-    return (
-        <h1>Welcome to the self report section</h1>
-    )
-}
+  getCurrentSelfReportPrompt = id => {
+    let action = {
+      type: "FETCH_SELF_REPORT_HABIT_PROMPTS",
+      payload: this.props.match.params.id
+    };
+    this.prop.dispatch(action);
+  };
 
+  getNextSelfReportPrompt = id => {
+    let action = {
+      type: "FETCH_SELF_REPORT_HABIT_PROMPTS",
+      payload: ++this.props.match.params.id
+    };
+    this.props.dispatch(action);
+  };
 
+  nextHandler = event => {
+    event.preventDefault();
 
-
-}
-
-const mapStoreToProps = (reduxStore) => {
-    return {
-        reduxStore
+    if (this.state.value === 0) {
+      return alert("do a thing dummy");
+    } else {
+      this.props.dispatch({
+        type: "ADD_SELF_REPORT",
+        payload: this.state
+      });
+      this.getNextSelfReportPrompt();
     }
+  };
+
+  handleChange = event => {
+    this.setState({
+      value: event.target.value
+    });
+  };
+
+  render() {
+    return (
+      <div>
+        {this.props.reduxStore.selfReportPrompt == "" &&
+          this.props.push("/dailyReview")}
+        <h1>Welcome to the self report section</h1>
+        <p>{this.props.reduxStore.selfReportPrompt.self_report_prompt_text}</p>
+        <form onSubmit={this.nextHandler}>
+          <RadioGroup
+            aria-label="Rating"
+            name="Rating"
+            onChange={this.handleChange}
+          >
+            <FormControlLabel
+              value="true"
+              control={<Radio color="primary" />}
+              label="TRUE"
+            />
+            <FormControlLabel
+              value="false"
+              control={<Radio color="primary" />}
+              label="FALSE"
+            />
+          </RadioGroup>
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={this.backHandler}
+          >
+            Back
+          </Button>
+          <Button variant="contained" color="primary" type="submit">
+            NEXT
+          </Button>
+        </form>
+      </div>
+    );
+  }
 }
 
-export default connect(mapStoreToProps)(ReportEntry)
+const mapStoreToProps = reduxStore => {
+  return {
+    reduxStore
+  };
+};
+
+export default connect(mapStoreToProps)(ReportEntry);
