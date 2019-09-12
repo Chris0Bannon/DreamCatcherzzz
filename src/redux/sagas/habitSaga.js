@@ -45,6 +45,7 @@ function * habitPromptSaga(){
     yield takeLatest('FETCH_HABIT_PROMPTS', fetchHabitPrompts);
     yield takeLatest('FETCH_ALL_HABIT_PROMPTS', fetchAllHabitPrompts);
     yield takeLatest('ADD_HABIT_RESPONSES', addHabitResponse);
+    
 }
 
 export default habitPromptSaga;

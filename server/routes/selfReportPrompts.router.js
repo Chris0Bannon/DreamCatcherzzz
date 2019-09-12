@@ -28,4 +28,9 @@ router.get(`/`, (req, res) => {
     });
 });
 
+router.post(`/`, async (req, res) => {
+    console.log('loggin req.body in selfReportRouter', req.body);
+    
+})
+
 module.exports = router;

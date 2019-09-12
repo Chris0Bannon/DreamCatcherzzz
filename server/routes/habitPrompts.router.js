@@ -28,5 +28,25 @@ router.get(`/`, (req, res) => {
         });
 });
 
+router.post(`/`, async (req, res) => {
+    console.log('logging req.body in habitRouter', req.body);
+    
+    const user = req.user.id;
+    const connection =await pool.connect()
+    try{
+        await connection.query('BEGIN');
+        const sqlAddUserEntry = `INSERT INTO "user_daily_entry" ("user_id", "date")
+	VALUES ($1, NOW())
+	RETURNING "id";`;
+    const result = await connection.query( sqlAddUserEntry, [user])
+    const entryId =result.rows[0].id
+        const sqlAddUserResponse = `INSERT INTO "user_response_self_report" ("user_response", "self_report_id", "user_entry_id")
+    VALUES ($1, $2, $3);`
+    
+}catch(error){
+    console.log(error);
+    
+}
+})
 
 module.exports = router;

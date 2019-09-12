@@ -2,6 +2,35 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Button from "@material-ui/core/Button";
 class DailyEntryReview extends Component {
+
+ state = {
+
+ }   
+ 
+componentDidMount = () => {
+    this.setState({
+        habits: this.props.reduxStore.habitResponses,
+        reports: this.props.reduxStore.selfReportResponses
+    })
+}
+  sendIt = () => {
+    this.props.dispatch({
+      type: "ADD_HABIT_RESPONSES",
+      payload: this.state.habits
+    });
+    this.props.dispatch({
+        type: "ADD_SELF_REPORT_RESPONSES",
+        payload: this.state.reports
+    })
+    this.props.dispatch({
+        type: 'RESET_HABIT_RESPONSES'
+    })
+    this.props.dispatch({
+        type: 'RESET_SELF_REPORT_RESPONSES'
+    })
+    this.props.history.push('/home')
+  };
+
   render() {
     return (
       <div>
@@ -34,7 +63,11 @@ class DailyEntryReview extends Component {
           </tbody>
         </table>
 
-        <Button variant="contained" color="primary">
+        <Button
+          onClick={this.sendIt}
+          variant="contained"
+          color="primary"
+        >
           Submit
         </Button>
       </div>
