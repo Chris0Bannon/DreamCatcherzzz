@@ -45,7 +45,7 @@ class EntryItem extends Component {
     } else {
       this.props.dispatch({
         type: "ADD_HABIT_RESPONSE",
-        payload: this.state
+        payload: this.state.value
       });
       this.getNextHabitPrompts();
     }

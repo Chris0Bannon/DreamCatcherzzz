@@ -5,6 +5,7 @@ import user from './userReducer';
 import habitPrompt from './habitPromptReducer';
 import selfReportPrompt from './selfReportPrompt';
 import selfReportResponses from './selfReportResponses';
+import habitResponses from './habitResponses';
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
 // This is imported in index.js as rootSaga
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   habitPrompt,
   selfReportPrompt,
   selfReportResponses,
+  habitResponses,
 });
 
 export default rootReducer;
