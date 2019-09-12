@@ -19,7 +19,9 @@ import Review from '../Review/Review';
 import EntryItem from '../EntryItem/EntryItem';
 import TransitionSlide from '../TransitionSlide/TransitionSlide';
 import ReportEntry from '../ReportEntry/ReportEntry';
+
 import DailyReview from '../DailyReview/DailyReview';
+
 
 const theme = createMuiTheme({
   palette: {
