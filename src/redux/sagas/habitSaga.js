@@ -15,6 +15,19 @@ function * fetchHabitPrompts(action){
     }
 }
 
+function * fetchAllHabitPrompts(){
+    try{
+     const config = {
+        headers: { 'Content-Type': 'application/json' },
+        withCredentials: true,
+    };
+    const response = yield axios.get(`api/habitPrompts`, config)
+    yield put ({type: 'SET_ALL_HABIT_PROMPTS', payload: response.data});
+}catch(error){
+    console.log('error in fetch all habit prompts', error);
+}
+}
+
 function * addHabitResponse(action){
     try{
         const config = {
@@ -30,7 +43,8 @@ function * addHabitResponse(action){
 
 function * habitPromptSaga(){
     yield takeLatest('FETCH_HABIT_PROMPTS', fetchHabitPrompts);
-    yield takeLatest('ADD_HABIT_RESPONSES', addHabitResponse)
+    yield takeLatest('FETCH_ALL_HABIT_PROMPTS', fetchAllHabitPrompts);
+    yield takeLatest('ADD_HABIT_RESPONSES', addHabitResponse);
 }
 
 export default habitPromptSaga;
