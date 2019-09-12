@@ -38,7 +38,7 @@ class ReportEntry extends Component {
     } else {
       this.props.dispatch({
         type: "ADD_SELF_REPORT",
-        payload: this.state
+        payload: this.state.value
       });
       this.getNextSelfReportPrompt();
     }
