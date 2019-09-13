@@ -5,10 +5,14 @@ import Radio from "@material-ui/core/Radio";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Button from "@material-ui/core/Button";
 
+
+
+
 class EntryItem extends Component {
   state = {
     value: 0
   };
+
 
   componentDidMount = () => {
     console.log("in component did componentDidMount");
@@ -26,6 +30,15 @@ class EntryItem extends Component {
     };
     this.props.dispatch(action);
   };
+
+  getPreviousHabitPrompts = id => {
+    let action = {
+      type: "FETCH_HABIT_PROMPTS",
+      payload: --this.props.match.params.id
+    };
+    this.props.dispatch(action);
+  }
+
   getNextHabitPrompts = id => {
     console.log("in NEXT habit getter");
 
@@ -35,6 +48,15 @@ class EntryItem extends Component {
     };
     this.props.dispatch(action);
   };
+
+backHandler = event => {
+console.log('you clicked back');
+this.getPreviousHabitPrompts();
+let action = {
+  type: "REMOVE_RECENT_HABIT",
+};
+this.props.dispatch(action);
+};
 
   nextHandler = event => {
     event.preventDefault();
@@ -48,6 +70,9 @@ class EntryItem extends Component {
         payload: this.state.value
       });
       this.getNextHabitPrompts();
+      this.setState({
+        value: 0,
+      })
     }
   };
 
@@ -67,8 +92,8 @@ class EntryItem extends Component {
         <p>{this.props.reduxStore.habitPrompt.habit_prompt_text}</p>
         <form onSubmit={this.nextHandler}>
           <RadioGroup
-            aria-label="Rating"
-            name="Rating"
+            name="trueOrFalse"
+            value= {this.state.value}
             onChange={this.handleChange}
           >
             <FormControlLabel
@@ -89,7 +114,7 @@ class EntryItem extends Component {
           >
             Back
           </Button>
-          <Button variant="contained" color="primary" type="submit">
+          <Button variant="contained"color="primary" type="submit">
             NEXT
           </Button>
         </form>

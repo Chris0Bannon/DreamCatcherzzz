@@ -11,7 +11,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
-import './App.css';
+
 import Header from '../Header/Header';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import DailyEntry from '../DailyEntry/DailyEntry';
@@ -21,7 +21,12 @@ import TransitionSlide from '../TransitionSlide/TransitionSlide';
 import ReportEntry from '../ReportEntry/ReportEntry';
 import CssBaseline from '@material-ui/core/CssBaseline'
 import DailyReview from '../DailyReview/DailyReview';
+import './App.css';
 
+// const style = {
+//   background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
+//   backgroundSize: "cover"
+// };
 
 const theme = createMuiTheme({
   palette: {
@@ -31,9 +36,8 @@ const theme = createMuiTheme({
     secondary: {
       main: "#007ac1"
     },
-    background: {
-      default: "#03a9f4"
-    }
+    background:'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+    
   }
 });
 
@@ -45,10 +49,11 @@ class App extends Component {
 
   render() {
     return (
+      
       <MuiThemeProvider theme={theme}>
-        <CssBaseline />
+        <CssBaseline className = "App"/>
         <Router>
-          <Header />
+            <Header style={{ background: 'linear - gradient(180deg, rgba(160, 50, 232, 1) 4 %, rgba(254, 9, 121, 1) 42 %, rgba(45, 24, 78, 1) 78 %)'}}/>
           <div>
             {/* <Nav /> */}
             <Switch>
@@ -104,10 +109,11 @@ class App extends Component {
               {/* If none of the other routes matched, we will show a 404. */}
               <Route render={() => <h1>404</h1>} />
             </Switch>
-            <Footer />
+           
           </div>
         </Router>
       </MuiThemeProvider>
+     
     )
   }
 }

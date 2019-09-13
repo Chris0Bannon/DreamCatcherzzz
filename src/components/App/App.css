@@ -1,11 +1,13 @@
+
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0px;
 }
 
 .alert {
-    background-color: #ff4545;
-    margin: 50px;
+  background-color: #ff4545;
+  margin: 50px;
 }
 
 /* form {
@@ -18,38 +20,41 @@ body {
 } */
 
 input {
-    margin: 5px;
-    margin-bottom: 10px;
+  margin: 5px;
+  margin-bottom: 10px;
 }
 
-.log-in, .log-out, .register {
+.log-in,
+.log-out,
+.register {
   background-color: #00acb0;
   border-radius: 4px;
   color: #f8f8f8;
   min-height: 50px;
   min-width: 100px;
-  outline:0;
+  outline: 0;
   cursor: pointer;
 }
 
-.log-in:hover, .log-out:hover, .register:hover {
+.log-in:hover,
+.log-out:hover,
+.register:hover {
   background-color: #008183;
 }
 
 /* This line makes the "Register" and "Login" buttons look like links */
 .link-button {
-    background:none;
-    color:inherit;
-    border:none;
-    padding:0;
-    font: inherit;
-    outline:0;
-    border-bottom:1px solid #444; 
-    cursor: pointer;
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  outline: 0;
+  border-bottom: 1px solid #444;
+  cursor: pointer;
 }
 .App-header {
-  background-color:#7c1fa3;
-  min-height: 30px;
+  min-height: 30px;  
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -58,18 +63,21 @@ input {
   color: rgb(245, 232, 47);
 }
 .HomeButton {
-display: flex;
-margin: 20px;
-text-align: center;
-
+  display: flex;
+  margin: 20px;
+  text-align: center;
 }
 .App-Logo {
-  height: 150px;
-  width: 150px;
+  height: 3em;
+  width: 1.5em;
   pointer-events: none;
-  border-radius: 50%;
+  border-radius: 35%;
+  display: inline-block;
+  vertical-align: middle;
 }
 .App-title {
+ 
+  display:inline;
   margin: 0px;
 }
 
@@ -77,6 +85,19 @@ text-align: center;
   text-align: center;
 }
 
+html {
+  color: yellowgreen;
+  background: linear-gradient(0deg, rgba(34,193,195,1) 4%, rgba(123,9,254,1) 42%, rgba(45,24,78,1) 68%);
+  /* background-image: url('../../images/dreamy.png'); */
+  height: 100%;
+  background-size: cover;
+ 
+}
+
+/* .menuButton{
+  position
+  float: right;
+} */
 .bestTable {
   transform: rotate(90deg);
 }

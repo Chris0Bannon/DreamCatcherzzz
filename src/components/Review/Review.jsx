@@ -7,7 +7,7 @@ class Review extends Component {
         return (
           <div>
             <h1>Hello From Review</h1>
-            <Button onClick = {() => {this.props.history.push('/home')}} variant= "contained" color = "primary">Back</Button>
+            <Button onClick = {() => {this.props.history.push('/home')}} className = "App">Back</Button>
           </div>
         );
     }

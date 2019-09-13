@@ -6,6 +6,9 @@ const habitResponseReducer = (state = [], action) => {
             return [...state, action.payload]
         case 'RESET_HABIT_RESPONSES':
             return state =[]
+        case 'REMOVE_RECENT_HABIT':
+          const everythingToKeep = state.slice(0, state.length -1);
+            return everythingToKeep;
         default:
             return state;
     }
