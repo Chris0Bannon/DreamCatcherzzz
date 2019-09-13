@@ -78,3 +78,11 @@ text-align: center;
 .App {
   text-align: center;
 }
+
+.bestTable {
+  transform: rotate(90deg);
+}
+
+.sure {
+  transform: rotate(270deg);
+}

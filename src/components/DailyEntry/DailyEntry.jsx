@@ -1,12 +1,13 @@
-import React, {Component} from 'react';
-import Button from '@material-ui/core/Button';
-import {connect} from 'react-redux';
-
+import React, { Component } from "react";
+import Button from "@material-ui/core/Button";
+import { connect } from "react-redux";
 
 class DailyEntry extends Component {
   componentDidMount = () => {
     console.log("mounting in the beginning slide");
     this.getCurrentSelfReportPrompt();
+    this.props.dispatch({ type: "FETCH_ALL_HABIT_PROMPTS" });
+    this.props.dispatch({ type: "FETCH_ALL_SELF_REPORT_PROMPTS" });
   };
 
   getCurrentSelfReportPrompt = id => {

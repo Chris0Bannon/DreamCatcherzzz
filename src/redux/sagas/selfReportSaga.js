@@ -14,6 +14,18 @@ function * fetchSelfReportPrompts(action){
         
     }
 }
+function* fetchAllSelfReportPrompts() {
+    try {
+        const config = {
+            headers: { 'Content-Type': 'application/json' },
+            withCredentials: true,
+        };
+        const response = yield axios.get(`api/habitPrompts`, config)
+        yield put({ type: 'SET_ALL_SELF_REPORT_PROMPTS', payload: response.data });
+    } catch (error) {
+        console.log('error in fetch all habit prompts', error);
+    }
+}
 
 function* addSelfReportResponse(action) {
     try {
@@ -32,6 +44,7 @@ function* addSelfReportResponse(action) {
 
 function * selfReportSaga(){
     yield takeLatest('FETCH_SELF_REPORT_HABIT_PROMPTS', fetchSelfReportPrompts)
+    yield takeLatest('FETCH_ALL_SELF_REPORT_PROMPTS', fetchAllSelfReportPrompts)
     yield takeLatest('ADD_SELF_REPORT_RESPONSES', addSelfReportResponse)
 }
 
