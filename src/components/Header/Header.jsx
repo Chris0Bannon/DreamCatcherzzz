@@ -27,64 +27,68 @@ function Header(props){
                 <img src={logo} className="App-Logo" alt="logo" />
                 DreamCatcherzzz
               </h1>
-              <h2 className="App-title">
-                Sleep Tight!
-                {props.user.id && (
-                  <>
-                    <Button
-                      className="menuButton"
-                      variant="contained"
-                      color="secondary"
-                      onClick={handleClick}
+
+              {props.user.id && (
+                <>
+                  <Button
+                    className="menuButton"
+                    variant="contained"
+                    color="secondary"
+                    onClick={handleClick}
+                  >
+                    Menu
+                  </Button>
+                  <Menu
+                    className="menu"
+                    id="simple-menu"
+                    anchorEl={anchorEl}
+                    keepMounted
+                    open={Boolean(anchorEl)}
+                    onClose={handleClose}
+                  >
+                    <MenuItem
+                      className="menu"
+                      component={Link}
+                      to="/home"
+                      onClick={handleClose}
                     >
-                      Menu
-                    </Button>
-                    <Menu
-                      id="simple-menu"
-                      anchorEl={anchorEl}
-                      keepMounted
-                      open={Boolean(anchorEl)}
-                      onClose={handleClose}
+                      Home
+                    </MenuItem>
+                    <MenuItem
+                      className="menu"
+                      component={Link}
+                      to="/dailyEntry"
+                      onClick={handleClose}
                     >
-                      <MenuItem
-                        component={Link}
-                        to="/home"
-                        onClick={handleClose}
-                      >
-                        Home
-                      </MenuItem>
-                      <MenuItem
-                        component={Link}
-                        to="/dailyEntry"
-                        onClick={handleClose}
-                      >
-                        Daily Entry
-                      </MenuItem>
-                      <MenuItem
-                        component={Link}
-                        to="/review"
-                        onClick={handleClose}
-                      >
-                        Review
-                      </MenuItem>
-                      <MenuItem
-                        component={Link}
-                        to="/about"
-                        onClick={handleClose}
-                      >
-                        About
-                      </MenuItem>
-                      <MenuItem
-                        component={Link}
-                        to="/"
-                        onClick={() => props.dispatch({ type: "LOGOUT" })}
-                      >
-                        Logout
-                      </MenuItem>
-                    </Menu>
-                  </>
-                )}
-              </h2>
+                      Daily Entry
+                    </MenuItem>
+                    <MenuItem
+                      className="menu"
+                      component={Link}
+                      to="/review"
+                      onClick={handleClose}
+                    >
+                      Review
+                    </MenuItem>
+                    <MenuItem
+                      className="menu"
+                      component={Link}
+                      to="/about"
+                      onClick={handleClose}
+                    >
+                      About
+                    </MenuItem>
+                    <MenuItem
+                      className="menu"
+                      component={Link}
+                      to="/"
+                      onClick={() => props.dispatch({ type: "LOGOUT" })}
+                    >
+                      Logout
+                    </MenuItem>
+                  </Menu>
+                </>
+              )}
             </header>
           </div>
         );

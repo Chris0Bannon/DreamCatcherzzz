@@ -36,8 +36,11 @@ const theme = createMuiTheme({
     secondary: {
       main: "#007ac1"
     },
-    background:'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
-    
+    overides: {
+      MuiMenuItem: {
+        backgroundColor: "white",
+      }
+    }
   }
 });
 
@@ -51,7 +54,6 @@ class App extends Component {
     return (
       
       <MuiThemeProvider theme={theme}>
-        <CssBaseline className = "App"/>
         <Router>
             <Header style={{ background: 'linear - gradient(180deg, rgba(160, 50, 232, 1) 4 %, rgba(254, 9, 121, 1) 42 %, rgba(45, 24, 78, 1) 78 %)'}}/>
           <div>

@@ -3,6 +3,7 @@
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
+  color: rgb(245, 232, 47);
 }
 
 .alert {
@@ -61,6 +62,7 @@ input {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: rgb(245, 232, 47);
+  position: relative;
 }
 .HomeButton {
   display: flex;
@@ -76,9 +78,8 @@ input {
   vertical-align: middle;
 }
 .App-title {
- 
-  display:inline;
-  margin: 0px;
+text-align: center;
+margin: 0;
 }
 
 .App {
@@ -94,10 +95,15 @@ html {
  
 }
 
-/* .menuButton{
-  position
-  float: right;
-} */
+.menuButton{
+  float: right !important;
+  margin-left: -50%;
+  margin-top: 2em;
+}
+
+.menuButton{
+  background-color: azure;
+}
 .bestTable {
   transform: rotate(90deg);
 }
