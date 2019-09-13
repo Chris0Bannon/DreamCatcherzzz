@@ -8,14 +8,14 @@ body {
     margin: 50px;
 }
 
-form {
+/* form {
     background-color: #dbd5d5;
     width: 30%;
     height: 250px;
     margin: 20px auto;
     padding: 25px;
     border-radius: 2px;
-}
+} */
 
 input {
     margin: 5px;
@@ -48,14 +48,14 @@ input {
     cursor: pointer;
 }
 .App-header {
-  background-color: #9753ac;
-  min-height: 2vh;
+  background-color:#7c1fa3;
+  min-height: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: rgb(221, 212, 86);
+  color: rgb(245, 232, 47);
 }
 .HomeButton {
 display: flex;
@@ -64,17 +64,15 @@ text-align: center;
 
 }
 .App-Logo {
-    display: inline;
-  animation: App-logo-spin infinite 20s linear;
   height: 150px;
   width: 150px;
   pointer-events: none;
   border-radius: 50%;
 }
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(1800deg); }
+.App-title {
+  margin: 0px;
 }
+
 .App {
   text-align: center;
 }

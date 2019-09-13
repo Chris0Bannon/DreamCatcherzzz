@@ -19,20 +19,20 @@ import Review from '../Review/Review';
 import EntryItem from '../EntryItem/EntryItem';
 import TransitionSlide from '../TransitionSlide/TransitionSlide';
 import ReportEntry from '../ReportEntry/ReportEntry';
-
+import CssBaseline from '@material-ui/core/CssBaseline'
 import DailyReview from '../DailyReview/DailyReview';
 
 
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: "#F44336"
+      main: "#c158dc"
     },
     secondary: {
-      main: "#fdd835"
+      main: "#007ac1"
     },
     background: {
-      default: "#EF6C00"
+      default: "#03a9f4"
     }
   }
 });
@@ -46,6 +46,7 @@ class App extends Component {
   render() {
     return (
       <MuiThemeProvider theme={theme}>
+        <CssBaseline />
         <Router>
           <Header />
           <div>
