@@ -28,7 +28,7 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/api/habitPrompts', habitPromptRouter);
 app.use('/api/selfReportPrompts', selfReportPromptRouter);
-app.use('api/userEntries', userEntriesRouter)
+app.use('/api/userEntries', userEntriesRouter)
 // Serve static files
 app.use(express.static('build'));
 

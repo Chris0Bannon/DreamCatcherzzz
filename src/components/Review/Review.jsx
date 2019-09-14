@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Button from '@material-ui/core/Button';
+import {connect} from 'react-redux';
 
 class Review extends Component {
 
@@ -8,6 +9,7 @@ fetchUserEntries =(event) => {
   let action = {
     type: 'FETCH_ALL_USER_ENTRIES'
   }
+  this.props.dispatch(action);
 }
 
     render() {
@@ -23,4 +25,4 @@ fetchUserEntries =(event) => {
 }
 
 
-export default Review;
+export default connect()(Review);
