@@ -20,7 +20,7 @@ function* fetchAllSelfReportPrompts() {
             headers: { 'Content-Type': 'application/json' },
             withCredentials: true,
         };
-        const response = yield axios.get(`api/habitPrompts`, config)
+        const response = yield axios.get(`api/selfReportPrompts`, config)
         yield put({ type: 'SET_ALL_SELF_REPORT_PROMPTS', payload: response.data });
     } catch (error) {
         console.log('error in fetch all habit prompts', error);

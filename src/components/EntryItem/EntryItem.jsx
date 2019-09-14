@@ -56,6 +56,9 @@ let action = {
   type: "REMOVE_RECENT_HABIT",
 };
 this.props.dispatch(action);
+this.setState({
+  value: 0,
+})
 };
 
   nextHandler = event => {

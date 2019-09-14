@@ -104,10 +104,10 @@ html {
 .menuButton{
   background-color: azure;
 }
-.bestTable {
-  transform: rotate(90deg);
-}
 
-.sure {
-  transform: rotate(270deg);
+.prettyTable {
+
+  position: relative;
+  overflow-y: scroll !important;
+  height: 400px;
 }

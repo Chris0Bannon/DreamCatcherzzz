@@ -14,8 +14,19 @@ function Header(props){
     setAnchorEl(event.currentTarget);
   }
 
+function localHandleClose(){
+setAnchorEl(null);
+
+}
+
   function handleClose(){
     setAnchorEl(null);
+    props.dispatch({
+      type: 'RESET_SELF_REPORT_RESPONSES'
+    });
+    props.dispatch({
+      type: 'RESET_HABIT_RESPONSES'
+    });
   }
 
    
@@ -44,7 +55,7 @@ function Header(props){
                     anchorEl={anchorEl}
                     keepMounted
                     open={Boolean(anchorEl)}
-                    onClose={handleClose}
+                    onClose={localHandleClose}
                   >
                     <MenuItem
                       className="menu"

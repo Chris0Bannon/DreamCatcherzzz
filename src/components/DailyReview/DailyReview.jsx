@@ -1,11 +1,21 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Button from "@material-ui/core/Button";
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+import {overflow} from '@material-ui/system';
+
 class DailyEntryReview extends Component {
+
 
  state = {
 
  }   
+ 
  
 componentDidMount = () => {
     this.setState({
@@ -33,41 +43,44 @@ componentDidMount = () => {
 
   render() {
     return (
-      <div>
+      <div >
         <h1>Hello From Daily Review</h1>
-        <table className="bestTable">
-          <thead></thead>
-          <tbody>
-            <tr>
+        <Paper className = "prettyTable" component = "div" overflow="auto"
+  //       style = {{
+  //   height: 200,
+  //   width: '100%',
+  //   overflow: 'auto'
+  // }}
+  >
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>Poop</TableCell>
+                <TableCell>Pee</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
               {this.props.reduxStore.allHabitPrompts.map(item => (
-                <td key={item.id}>{item.habit_prompt_text}</td>
+                <TableRow key={item.id}>
+                  <TableCell>{item.habit_prompt_text}</TableCell>
+                  <TableCell>
+                    {this.props.reduxStore.habitResponses[item.id - 1]}
+                  </TableCell>
+                </TableRow>
               ))}
-            </tr>
-            <tr>
-              {this.props.reduxStore.habitResponses.map(item => (
-                <td>ANSWER: {item}</td>
-              ))}
-            </tr>
-            <tr>
               {this.props.reduxStore.allSelfReportPrompts.map(item => (
-                <td className="sure" key={item.id}>
-                  {item.habit_prompt_text}
-                </td>
+                <TableRow key={item.id}>
+                  <TableCell>{item.self_report_prompt_text}</TableCell>
+                  <TableCell>
+                    {this.props.reduxStore.selfReportResponses[item.id - 1]}
+                  </TableCell>
+                </TableRow>
               ))}
-            </tr>
-            <tr>
-              {this.props.reduxStore.selfReportResponses.map(item => (
-                <td className="sure">ANSWER: {item}</td>
-              ))}
-            </tr>
-          </tbody>
-        </table>
+            </TableBody>
+          </Table>
+        </Paper>
 
-        <Button
-          onClick={this.sendIt}
-          variant="contained"
-          color="primary"
-        >
+        <Button onClick={this.sendIt} variant="contained" color="primary">
           Submit
         </Button>
       </div>

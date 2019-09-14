@@ -22,6 +22,14 @@ class ReportEntry extends Component {
     this.props.dispatch(action);
   };
 
+getPreviousSelfReportPrompts = id => {
+  let action = {
+    type: "FETCH_SELF_REPORT_HABIT_PROMPTS",
+    payload: --this.props.match.params.id
+  };
+  this.props.dispatch(action);
+};
+
   getNextSelfReportPrompt = id => {
     let action = {
       type: "FETCH_SELF_REPORT_HABIT_PROMPTS",
@@ -29,6 +37,18 @@ class ReportEntry extends Component {
     };
     this.props.dispatch(action);
   };
+
+backHandler = event => {
+  console.log('you clicked back');
+  this.getPreviousSelfReportPrompts();
+  let action = {
+    type: "REMOVE_RECENT_SELF_REPORT",
+  };
+  this.props.dispatch(action);
+  this.setState({
+    value: 0,
+  })
+};
 
   nextHandler = event => {
     event.preventDefault();
@@ -41,6 +61,9 @@ class ReportEntry extends Component {
         payload: this.state.value
       });
       this.getNextSelfReportPrompt();
+      this.setState({
+      value: 0,
+      })
     }
   };
 
@@ -59,8 +82,8 @@ class ReportEntry extends Component {
         <p>{this.props.reduxStore.selfReportPrompt.self_report_prompt_text}</p>
         <form onSubmit={this.nextHandler}>
           <RadioGroup
-            aria-label="Rating"
-            name="Rating"
+            name="trueOrFalse"
+            value = {this.state.value}
             onChange={this.handleChange}
           >
             <FormControlLabel

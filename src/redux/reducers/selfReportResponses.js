@@ -6,6 +6,9 @@ const selfReportResponsesReducer = (state = [], action) => {
             return [...state, action.payload]
         case 'RESET_SELF_REPORT_RESPONSES':
             return state = []
+        case 'REMOVE_RECENT_SELF_REPORT':
+            const everyThingToKeep = state.slice(0, state.length -1);
+            return everyThingToKeep;
         default:
             return state;
     }

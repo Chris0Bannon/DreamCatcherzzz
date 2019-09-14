@@ -38,7 +38,7 @@ const theme = createMuiTheme({
     },
     overides: {
       MuiMenuItem: {
-        backgroundColor: "white",
+        backgroundColor: "white"
       }
     }
   }
