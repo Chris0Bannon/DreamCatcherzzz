@@ -12,7 +12,7 @@ const passport = require('./strategies/user.strategy');
 const userRouter = require('./routes/user.router');
 const habitPromptRouter = require('./routes/habitPrompts.router.js');
 const selfReportPromptRouter = require('./routes/selfReportPrompts.router.js');
-
+const userEntriesRouter = require('./routes/userEntries.router.js')
 // Body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -28,7 +28,7 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/api/habitPrompts', habitPromptRouter);
 app.use('/api/selfReportPrompts', selfReportPromptRouter);
-
+app.use('/api/userEntries', userEntriesRouter)
 // Serve static files
 app.use(express.static('build'));
 
