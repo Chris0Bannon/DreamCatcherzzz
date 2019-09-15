@@ -17,6 +17,7 @@ fetchMostRecentUserEntry = () => {
    type: 'FETCH_MOST_RECENT_USER_ENTRY'
  };
  this.props.dispatch(action);
+ this.props.history.push('/recentSubmissionReview')
 }
 
     render() {
@@ -26,6 +27,7 @@ fetchMostRecentUserEntry = () => {
             <Button onClick = {() => {this.props.history.push('/home')}} className = "tryItBtn">Back</Button>
             <Button style = {{background: 'radial-gradient(circle, rgba(50,210,232,0) 4%, rgba(9,224,254,1) 65%, rgba(45,24,78,1) 96%)'}} onClick = {this.fetchUserEntries}>Get Everything</Button>
             <Button style = {{background: 'radial-gradient(circle, rgba(50,210,232,0) 4%, rgba(9,224,254,1) 65%, rgba(45,24,78,1) 96%)'}} onClick = {this.fetchMostRecentUserEntry}>Get Most Recent Entry</Button>
+            
           </div>
         );
     }

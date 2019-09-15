@@ -21,6 +21,7 @@ import TransitionSlide from '../TransitionSlide/TransitionSlide';
 import ReportEntry from '../ReportEntry/ReportEntry';
 import CssBaseline from '@material-ui/core/CssBaseline'
 import DailyReview from '../DailyReview/DailyReview';
+import RecentSubmissionReview from '../RecentSubmissionReview/RecentSubmissionReview.jsx';
 import './App.css';
 
 // const style = {
@@ -107,6 +108,10 @@ class App extends Component {
               <ProtectedRoute
               path="/dailyReview"
               component = {DailyReview}
+              />
+              <ProtectedRoute
+              path = "/recentSubmissionReview"
+              component = {RecentSubmissionReview}
               />
               {/* If none of the other routes matched, we will show a 404. */}
               <Route render={() => <h1>404</h1>} />
