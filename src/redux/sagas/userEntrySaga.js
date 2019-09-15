@@ -7,7 +7,7 @@ function * fetchAllUserEntries(){
         headers: { 'Content-Type': 'application/json' },
         withCredentials: true,
 };
-const response = yield axios.get(`/api/userEntries`, config)
+const response = yield axios.get(`/api/userEntries/mostRecent`, config)
 yield put ({type: 'SET_ALL_USER_ENTRIES', payload: response.data})
     }catch(error){
         console.log('error in fetchAllUserEntries', error);   
