@@ -17,7 +17,8 @@ fetchUserEntries =(event) => {
           <div>
             <h1>Hello From Review</h1>
             <Button onClick = {() => {this.props.history.push('/home')}} className = "tryItBtn">Back</Button>
-            <Button style = {{background: 'radial-gradient(circle, rgba(50,210,232,0) 4%, rgba(9,224,254,1) 65%, rgba(45,24,78,1) 96%)'}} onClick = {this.fetchUserEntries}>Get anything</Button>
+            <Button style = {{background: 'radial-gradient(circle, rgba(50,210,232,0) 4%, rgba(9,224,254,1) 65%, rgba(45,24,78,1) 96%)'}} onClick = {this.fetchUserEntries}>Get Everything</Button>
+
           </div>
         );
     }
