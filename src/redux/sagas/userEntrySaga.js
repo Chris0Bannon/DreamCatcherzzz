@@ -27,11 +27,26 @@ function * fetchMostRecentUserEntry (){
     }
 } 
 
+function * updateUserEntry(){
+    try {
+        const config = {
+            headers: { 'Content-Type': 'application/json' },
+            withCredentials: true,
+        };
+        yield axios.put(`api/userEntries/edit`, { DailyEntryId: action.payload.DailyEntryId, promptId: action.payload.promptId}, config)
+        yield put({
+            type:'FETCH_MOST_RECENT_USER_ENTRY'
+        })
+    }catch(error){
+        console.log('error in update user entry', error);
+        
+    }
+}
 
 
 
 function * userEntrySaga(){
-
+    yield takeLatest('UPDATE_ITEM', updateUserEntry)
     yield takeLatest('FETCH_ALL_USER_ENTRIES', fetchAllUserEntries)
     yield takeLatest('FETCH_MOST_RECENT_USER_ENTRY', fetchMostRecentUserEntry)
 }
