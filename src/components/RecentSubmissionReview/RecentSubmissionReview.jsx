@@ -17,7 +17,7 @@ class RecentSubmissionReview extends Component {
     this.props.history.push("/review");
   };
 
-  componentDidMount = () => {
+  componentDidMount(){
     this.fetchMostRecentUserEntry();
   };
 
@@ -29,30 +29,6 @@ class RecentSubmissionReview extends Component {
     this.props.history.push("/recentSubmissionReview");
   };
 
-  // changer = (array) =>{
-  //       for(let i=0; i<array.length; i++){
-  //         render(
-  //             <TableRow key={i.id}>
-  //               <TableCell>{i.habit_prompt_text}</TableCell>
-  //               <TableCell>{JSON.stringify(i.user_response)}</TableCell>
-  //               <TableCell>
-  //                 <Button
-  //                   onClick={() => {
-  //                     console.log({ i });
-
-  //                     // this.props.dispatch({
-  //                     // type: "CHANGE_MOST_RECENT",
-  //                     // action: item.id
-  //                     // })
-  //                   }}
-  //                 >
-  //                   Change
-  //                 </Button>
-  //               </TableCell>
-  //             </TableRow>
-  //           );
-  //     console.log('this is the log i want', i);
-  // }}
 
   render() {
     return (

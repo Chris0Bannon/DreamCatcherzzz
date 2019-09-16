@@ -27,13 +27,16 @@ function * fetchMostRecentUserEntry (){
     }
 } 
 
-function * updateUserEntry(){
+function * updateUserEntry(action){
     try {
         const config = {
             headers: { 'Content-Type': 'application/json' },
             withCredentials: true,
         };
-        yield axios.put(`api/userEntries/edit`, { DailyEntryId: action.payload.DailyEntryId, promptId: action.payload.promptId}, config)
+        yield axios.put(`api/userEntries/edit`, action.payload)
+        .then((result) => {
+            console.log((result));    
+        })
         yield put({
             type:'FETCH_MOST_RECENT_USER_ENTRY'
         })
