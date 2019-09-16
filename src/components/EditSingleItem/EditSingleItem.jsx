@@ -3,42 +3,74 @@ import {connect} from 'react-redux';
 import Button from '@material-ui/core/Button'
 
 class EditSingleItem extends Component {
- 
+  fetchMostRecentUserEntry = () => {
+    let action = {
+      type: "FETCH_MOST_RECENT_USER_ENTRY"
+    };
+    this.props.dispatch(action);
+    this.props.history.push("/recentSubmissionReview");
+  };
+
+doEverything = () => {
+
+this.props.dispatch({
+  type: "UPDATE_ITEM",
+  payload: {
+    dailyEntryId: this.props.reduxStore.mostRecentUserEntry.daily_entry_id,
+    promptId: this.props.reduxStore.mostRecentUserEntry.habit_id,
+    response: !this.props.reduxStore.mostRecentUserEntry.user_response
+  }
+});
+    this.props.history.push("/recentSubmissionReview");
+}
+
   render() {
     return (
       <div>
-        <h1>HELOOE FORM SINFLE ITEM</h1>
+        <p>You responded to this prompt:</p>
         <p>{this.props.reduxStore.mostRecentUserEntry.habit_prompt_text}</p>
+        <p>with the answer of:</p>
         <p>
           {JSON.stringify(
             this.props.reduxStore.mostRecentUserEntry.user_response
           )}
         </p>
-        <p>would you like to change your response to this prompt?</p>
+        <p>
+          would you like to change your response to this prompt to{" "}
+          {JSON.stringify(
+            !this.props.reduxStore.mostRecentUserEntry.user_response
+          )}{" "}
+          ?
+        </p>
         <Button
           onClick={() => {
+              console.log('you clicked change');
+              
             this.props.dispatch({
               type: "UPDATE_ITEM",
               payload: {
-                dailyEntryId: this.props.reduxStore.mostRecentUserEntry.daily_entry_id,
+                dailyEntryId: this.props.reduxStore.mostRecentUserEntry
+                  .daily_entry_id,
                 promptId: this.props.reduxStore.mostRecentUserEntry.habit_id,
-                response: !(this.props.reduxStore.mostRecentUserEntry.user_response)
-              }
+                response: !this.props.reduxStore.mostRecentUserEntry
+                  .user_response
+              } 
             });
+            this.props.history.push("/recentSubmissionReview");
           }}
           variant="contained"
         >
-          YES
+          YES, CHANGE IT
         </Button>
         <Button
           onClick={() => {
-            
+              this.fetchMostRecentUserEntry();
             this.props.history.push("/recentSubmissionReview");
           }}
           color="secondary"
           variant="contained"
         >
-          Nah GO Back
+          CANCEL
         </Button>
       </div>
     );

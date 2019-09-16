@@ -28,6 +28,7 @@ class RecentSubmissionReview extends Component {
 
 
   render() {
+
     return (
       <div>
         <h1>Review your most recent submission in the table below!</h1>
