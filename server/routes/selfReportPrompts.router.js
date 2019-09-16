@@ -8,7 +8,7 @@ router.get(`/:id`, (req, res) => {
     let queryText = `SELECT * FROM "self_report_prompts" WHERE "id" = $1;`;
     pool.query(queryText, [selfReport])
         .then((result) => {
-            console.log(result);
+           
             res.send(result.rows[0])
         }).catch((error) => {
             console.log(error);
@@ -20,7 +20,7 @@ router.get(`/`, (req, res) => {
     let queryText = `SELECT * FROM "self_report_prompts";`;
     pool.query(queryText)
     .then((result) => {
-        console.log(result);
+        
         res.send(result.rows)
     }).catch((error) => {
         console.log(error);

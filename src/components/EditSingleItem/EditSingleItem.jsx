@@ -20,9 +20,9 @@ class EditSingleItem extends Component {
             this.props.dispatch({
               type: "UPDATE_ITEM",
               payload: {
-                dailyEntryId: this.props.reduxStore.mostRecentUserEntry
-                  .daily_entry_id,
-                promptId: this.props.reduxStore.mostRecentUserEntry.habit_id
+                dailyEntryId: this.props.reduxStore.mostRecentUserEntry.daily_entry_id,
+                promptId: this.props.reduxStore.mostRecentUserEntry.habit_id,
+                response: !(this.props.reduxStore.mostRecentUserEntry.user_response)
               }
             });
           }}

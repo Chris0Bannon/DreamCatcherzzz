@@ -52,17 +52,17 @@ router.put('/edit', (req, res) => {
 	console.log(req.body, req.user);
 	let dailyEntryId = req.body.dailyEntryId;
 	let promptId = req.body.promptId
-	
+	let response = req.body.response
 	try{
 		let queryText = `UPDATE "user_response_self_report" 
-	SET "user_response" = false
+	SET "user_response" = $3
 	WHERE "daily_entry_id" = $1 AND "self_report_id" = $2;`;
 		let queryText2 = `UPDATE "user_response_habit"
-	SET "user_response" = false
+	SET "user_response" = $3
 	WHERE "daily_entry_id" = $1 AND "habit_id" = $2;`;
-		pool.query(queryText, [dailyEntryId, promptId])
+		pool.query(queryText, [dailyEntryId, promptId, response])
 		.then(() => {
-			pool.query(queryText2, [dailyEntryId, promptId])
+			pool.query(queryText2, [dailyEntryId, promptId, response])
 			.then((result)=> {
 				res.sendStatus(201)
 			}).catch((error) => {
