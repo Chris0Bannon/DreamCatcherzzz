@@ -31,6 +31,7 @@ function * fetchMostRecentUserEntry (){
 
 
 function * userEntrySaga(){
+
     yield takeLatest('FETCH_ALL_USER_ENTRIES', fetchAllUserEntries)
     yield takeLatest('FETCH_MOST_RECENT_USER_ENTRY', fetchMostRecentUserEntry)
 }

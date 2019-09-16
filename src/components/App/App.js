@@ -11,7 +11,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
-
+import EditSingleItem from '../EditSingleItem/EditSingleItem'
 import Header from '../Header/Header';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import DailyEntry from '../DailyEntry/DailyEntry';
@@ -112,6 +112,10 @@ class App extends Component {
               <ProtectedRoute
               path = "/recentSubmissionReview"
               component = {RecentSubmissionReview}
+              />
+              <ProtectedRoute
+              path = "/edit"
+              component = {EditSingleItem}
               />
               {/* If none of the other routes matched, we will show a 404. */}
               <Route render={() => <h1>404</h1>} />
