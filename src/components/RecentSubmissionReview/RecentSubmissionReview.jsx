@@ -7,10 +7,7 @@ import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import RadioGroup from "@material-ui/core/RadioGroup";
-import Radio from "@material-ui/core/Radio";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import { log } from "util";
+
 
 class RecentSubmissionReview extends Component {
   backHandler = () => {
@@ -33,50 +30,51 @@ class RecentSubmissionReview extends Component {
   render() {
     return (
       <div>
-        <h1>Hello from RecentSubmissionReview</h1>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>This is</TableCell>
-              <TableCell>THe BEst</TableCell>
-              <TableCell>I can do</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {/* {this.changer(this.props.reduxStore.mostRecentUserEntry)} */}
-            {this.props.reduxStore.mostRecentUserEntry.map((item, i) => {
-              return (
-                <TableRow key={i}>
-                  <TableCell>{item.habit_prompt_text}</TableCell>
-                  <TableCell>{JSON.stringify(item.user_response)}</TableCell>
-                  <TableCell>
-                    <Button
-                      onClick={() => {
-                        console.log(i)
-                        this.props.dispatch({
-                          type: "CHANGE_MOST_RECENT",
-                          payload: i
-                        });
-                        this.props.history.push('/edit')
-                      }}
-                    >
-                      Change
-                    </Button>
-                  </TableCell>
-                </TableRow>
-              );
-            })}
-          </TableBody>
-        </Table>
+        <h1>Review your most recent submission in the table below!</h1>
+        <Paper className="prettyTable" component="div" overflow="scroll">
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>Prompt</TableCell>
+                <TableCell>YourResponse</TableCell>
+                <TableCell>Edit</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              
+              {this.props.reduxStore.mostRecentUserEntry.map((item, i) => {
+                return (
+                  <TableRow key={i}>
+                    <TableCell>{item.habit_prompt_text}</TableCell>
+                    <TableCell>{JSON.stringify(item.user_response)}</TableCell>
+                    <TableCell>
+                      <Button
+                        variant="contained"
+                        color="secondary"
+                        onClick={() => {
+                          console.log(i);
+                          this.props.dispatch({
+                            type: "CHANGE_MOST_RECENT",
+                            payload: i
+                          });
+                          this.props.history.push("/edit");
+                        }}
+                      >
+                        Change
+                      </Button>
+                    </TableCell>
+                  </TableRow>
+                );
+              })}
+            </TableBody>
+          </Table>
+        </Paper>
         <Button
           onClick={this.backHandler}
           color="secondary"
           variant="contained"
         >
           Return to History
-        </Button>
-        <Button variant="contained" color="secondary">
-          Submit Changes
         </Button>
       </div>
     );
