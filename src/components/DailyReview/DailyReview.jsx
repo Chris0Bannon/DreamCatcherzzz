@@ -7,7 +7,6 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import {overflow} from '@material-ui/system';
 import Box from '@material-ui/core/Box';
 
 class DailyEntryReview extends Component {
@@ -51,11 +50,7 @@ componentDidMount = () => {
             className="prettyTable"
             component="div"
             overflow="scroll"
-            //       style = {{
-            //   height: 200,
-            //   width: '100%',
-            //   overflow: 'auto'
-            // }}
+           
           >
             <Table>
               <TableHead>
