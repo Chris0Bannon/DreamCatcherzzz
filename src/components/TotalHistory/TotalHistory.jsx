@@ -57,11 +57,11 @@ viewHandler = (item) => {
                       <TableCell>
                         <Button
                           onClick={() => {
-                              console.log(i); 
-                              this.props.dispatch({
-                                type: "VIEW_THIS_ITEM",
-                                payload: i
-                              });
+                            console.log(i);
+                            this.props.dispatch({
+                              type: "VIEW_THIS_ITEM",
+                              payload: i
+                            });
                           }}
                           variant="contained"
                           color="secondary"
@@ -70,7 +70,17 @@ viewHandler = (item) => {
                         </Button>
                       </TableCell>
                       <TableCell>
-                        <Button variant="contained" color="secondary">
+                        <Button
+                          onClick={() => {
+                            console.log(this.props.reduxStore.userEntriesReducer[i]);
+                            this.props.dispatch({
+                              type: "DELETE_IT",
+                              payload: this.props.reduxStore.userEntriesReducer[i].daily_entry_id
+                            });
+                          }}
+                          variant="contained"
+                          color="secondary"
+                        >
                           DELETE
                         </Button>
                       </TableCell>

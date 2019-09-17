@@ -78,16 +78,46 @@ router.put('/edit', (req, res) => {
 	}	
  })
 
- router.delete('/delete', async (req, res) => {
-	 console.log(req.body);
+
+
+//  router.delete('/:id', (req, res) => {
+// console.log('id to go', req.params.id);
+	 
+// try{
+// const queryTex1 = `DELETE FROM "user_response_habit"
+// 	WHERE "daily_entry_id" = $1;`
+// 	let queryText2 = `DELETE FROM "user_response_self_report"
+// 	WHERE "daily_entry_id" = $1;`
+// 	pool.query(queryTex1, [req.params.id])
+// 	.then(() => {
+// 		pool.query(queryText2, [req.params.id])
+// 			.then((result)=> {
+// 				res.sendStatus(200)
+// 			}).catch((error) => {
+// 				log('error in queryText2', error)
+// 			})
+// 	}).catch((error) => {
+// console.log('error in query1', error);
+// 	})
+// }
+// catch(error){
+// 	console.log('catching in the big delete catch', error);
+// }
+//  })
+
+ router.delete('/:id', async (req, res) => {
+	 console.log('req.params.id', req.params.id);
 	const user = req.user.id;
-	const date = req.body.date
+	const date = req.prams.id
+	
+	console.log('show me the date', date);
+	
 
 	const connection = await pool.connect()
 	try{
 		await connection.query('BEGIN');
 		const sqlFindEntryIds = `SELECT "id" FROM "user_daily_entry"
-		WHERE "date" = $1 AND "user_id" = $2;`;
+		WHERE "date" = CAST($1 AS DATE) AND "user_id" = $2;`;
 		const result = await connection.query( sqlFindEntryIds, [date, user]);
 
 		const entryId1 = result.rows[0].id;

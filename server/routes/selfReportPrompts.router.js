@@ -44,12 +44,19 @@ router.post(`/`, rejectUnauthenticated, async (req, res) => {
         const entryId = result.rows[0].id
         const sqlAddUserResponse = `INSERT INTO "user_response_self_report" ("user_response", "self_report_id", "daily_entry_id")
     VALUES ($1, $2, $3);`;
-        
+        const sqlAddUserResponse2 = `INSERT INTO "user_response_habit" ("user_response", "habit_id", "daily_entry_id")
+    VALUES ($1, $2, $3);`;
 
-        for (let i = 0; i < req.body.user_response.length; i++) {
-            console.log('I am actually looping', req.body.user_response[i], i);
-            await connection.query(sqlAddUserResponse, [req.body.user_response[i], i + 1, entryId])
+        for (let i = 0; i < req.body.user_response.reports.length; i++) {
+            console.log('I am actually looping', req.body.user_response.reports[i], i);
+            await connection.query(sqlAddUserResponse, [req.body.user_response.reports[i], i + 1, entryId])
         }
+
+        for (let i = 0; i < req.body.user_response.habits.length; i++) {
+            console.log('I am actually looping', req.body.user_response.habits[i], i);
+            await connection.query(sqlAddUserResponse2, [req.body.user_response.habits[i], i + 1, entryId])
+        }
+
         await connection.query('COMMIT');
         res.sendStatus(201);
     } catch (error) {
