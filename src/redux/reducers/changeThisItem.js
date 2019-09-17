@@ -4,8 +4,7 @@ const changeThisItem = (state = [], action) => {
             return action.payload;
         case 'CHANGE_MOST_RECENT':
             return state[action.payload]
-            
-        default: 
+            default: 
             return state;
     }
 }
