@@ -23,7 +23,7 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import DailyReview from '../DailyReview/DailyReview';
 import RecentSubmissionReview from '../RecentSubmissionReview/RecentSubmissionReview.jsx';
 import './App.css';
-
+import TotalHistory from '../TotalHistory/TotalHistory';
 // const style = {
 //   background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
 //   backgroundSize: "cover"
@@ -116,6 +116,10 @@ class App extends Component {
               <ProtectedRoute
               path = "/edit"
               component = {EditSingleItem}
+              />
+              <ProtectedRoute
+              path = "/totalHistory"
+              component = {TotalHistory}
               />
               {/* If none of the other routes matched, we will show a 404. */}
               <Route render={() => <h1>404</h1>} />

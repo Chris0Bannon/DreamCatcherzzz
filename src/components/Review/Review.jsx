@@ -10,6 +10,8 @@ fetchUserEntries =(event) => {
     type: 'FETCH_ALL_USER_ENTRIES'
   }
   this.props.dispatch(action);
+
+  this.props.history.push('/totalHistory')
 }
 
 fetchMostRecentUserEntry = () => {
