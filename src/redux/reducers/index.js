@@ -11,6 +11,7 @@ import allSelfReportPrompts from './allSelfReportPrompts';
 import userEntriesReducer from './userEntriesReducer';
 import mostRecentUserEntry from './mostRecentUserEntry';
 import changeThisItem from './changeThisItem';
+import viewOnceItem from './viewOnceItem';
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
 // This is imported in index.js as rootSaga
@@ -30,6 +31,7 @@ const rootReducer = combineReducers({
   userEntriesReducer,
   mostRecentUserEntry,
   changeThisItem,
+  viewOnceItem,
 });
 
 export default rootReducer;

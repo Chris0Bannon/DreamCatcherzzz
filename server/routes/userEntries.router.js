@@ -78,4 +78,38 @@ router.put('/edit', (req, res) => {
 	}	
  })
 
+ router.delete('/delete', async (req, res) => {
+	 console.log(req.body);
+	const user = req.user.id;
+	const date = req.body.date
+
+	const connection = await pool.connect()
+	try{
+		await connection.query('BEGIN');
+		const sqlFindEntryIds = `SELECT "id" FROM "user_daily_entry"
+		WHERE "date" = $1 AND "user_id" = $2;`;
+		const result = await connection.query( sqlFindEntryIds, [date, user]);
+
+		const entryId1 = result.rows[0].id;
+		const entryId2 = result.rows[1].id;
+		const deleteFirst = `DELETE FROM "user_response_self_report"
+	WHERE "daily_entry_id" = $3 OR "daily_entry_id" = $4;`;
+		const deleteSecond = `DELETE FROM "user_response_habit"
+	WHERE "daily_entry_id" = $3 OR "daily_entry_id" = $4;`;
+		const deleteLast = `DELETE FROM "user_daily_entry"
+	WHERE "id" = $3 OR "id" = $4;`
+	await connection.query(deleteFirst, [entryId1, entryId2]);
+	await connection.query(deleteSecond, [entryId1, entryId2]);
+	await connection.query(deleteLast, [ entryId1, entryId2]);
+	await connection.query('COMMIT');
+	res.sendStatus(200);
+	}catch (error) {
+		await connection.query('ROLLBACK');
+		console.log(`Transaction error -RollingBack DELEETS`, error);
+		res.sendStatus(500);
+	}finally {
+		connection.release()
+	}	 
+ });
+
 module.exports = router;
