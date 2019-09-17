@@ -11,34 +11,22 @@ class EditSingleItem extends Component {
     this.props.history.push("/recentSubmissionReview");
   };
 
-doEverything = () => {
-
-this.props.dispatch({
-  type: "UPDATE_ITEM",
-  payload: {
-    dailyEntryId: this.props.reduxStore.mostRecentUserEntry.daily_entry_id,
-    promptId: this.props.reduxStore.mostRecentUserEntry.habit_id,
-    response: !this.props.reduxStore.mostRecentUserEntry.user_response
-  }
-});
-    this.props.history.push("/recentSubmissionReview");
-}
 
   render() {
     return (
       <div>
         <p>You responded to this prompt:</p>
-        <p>{this.props.reduxStore.mostRecentUserEntry.habit_prompt_text}</p>
+        <p>{this.props.reduxStore.changeThisItem.habit_prompt_text}</p>
         <p>with the answer of:</p>
         <p>
           {JSON.stringify(
-            this.props.reduxStore.mostRecentUserEntry.user_response
+            this.props.reduxStore.changeThisItem.user_response
           )}
         </p>
         <p>
           would you like to change your response to this prompt to{" "}
           {JSON.stringify(
-            !this.props.reduxStore.mostRecentUserEntry.user_response
+            !this.props.reduxStore.changeThisItem.user_response
           )}{" "}
           ?
         </p>
@@ -49,11 +37,10 @@ this.props.dispatch({
             this.props.dispatch({
               type: "UPDATE_ITEM",
               payload: {
-                dailyEntryId: this.props.reduxStore.mostRecentUserEntry
+                dailyEntryId: this.props.reduxStore.changeThisItem
                   .daily_entry_id,
-                promptId: this.props.reduxStore.mostRecentUserEntry.habit_id,
-                response: !this.props.reduxStore.mostRecentUserEntry
-                  .user_response
+                promptId: this.props.reduxStore.changeThisItem.habit_id,
+                response: !this.props.reduxStore.changeThisItem.user_response
               } 
             });
             this.props.history.push("/recentSubmissionReview");
