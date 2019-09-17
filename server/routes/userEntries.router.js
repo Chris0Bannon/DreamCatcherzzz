@@ -79,67 +79,21 @@ router.put('/edit', (req, res) => {
  })
 
 
+router.delete('/:id', (req, res) => {
 
-//  router.delete('/:id', (req, res) => {
-// console.log('id to go', req.params.id);
-	 
-// try{
-// const queryTex1 = `DELETE FROM "user_response_habit"
-// 	WHERE "daily_entry_id" = $1;`
-// 	let queryText2 = `DELETE FROM "user_response_self_report"
-// 	WHERE "daily_entry_id" = $1;`
-// 	pool.query(queryTex1, [req.params.id])
-// 	.then(() => {
-// 		pool.query(queryText2, [req.params.id])
-// 			.then((result)=> {
-// 				res.sendStatus(200)
-// 			}).catch((error) => {
-// 				log('error in queryText2', error)
-// 			})
-// 	}).catch((error) => {
-// console.log('error in query1', error);
-// 	})
-// }
-// catch(error){
-// 	console.log('catching in the big delete catch', error);
-// }
-//  })
-
- router.delete('/:id', async (req, res) => {
-	 console.log('req.params.id', req.params.id);
-	const user = req.user.id;
-	const date = req.prams.id
 	
-	console.log('show me the date', date);
-	
+	const queryText = `DELETE FROM "user_daily_entry"
+	WHERE "id" = $1;`
+	pool.query(queryText, [req.params.id])
+	.then((result) => {
+		res.sendStatus(200)
+	}).catch((error) => {
+		console.log('error in server side DELETE', error);
+		res.sendStatus
+	})
+})
 
-	const connection = await pool.connect()
-	try{
-		await connection.query('BEGIN');
-		const sqlFindEntryIds = `SELECT "id" FROM "user_daily_entry"
-		WHERE "date" = CAST($1 AS DATE) AND "user_id" = $2;`;
-		const result = await connection.query( sqlFindEntryIds, [date, user]);
 
-		const entryId1 = result.rows[0].id;
-		const entryId2 = result.rows[1].id;
-		const deleteFirst = `DELETE FROM "user_response_self_report"
-	WHERE "daily_entry_id" = $3 OR "daily_entry_id" = $4;`;
-		const deleteSecond = `DELETE FROM "user_response_habit"
-	WHERE "daily_entry_id" = $3 OR "daily_entry_id" = $4;`;
-		const deleteLast = `DELETE FROM "user_daily_entry"
-	WHERE "id" = $3 OR "id" = $4;`
-	await connection.query(deleteFirst, [entryId1, entryId2]);
-	await connection.query(deleteSecond, [entryId1, entryId2]);
-	await connection.query(deleteLast, [ entryId1, entryId2]);
-	await connection.query('COMMIT');
-	res.sendStatus(200);
-	}catch (error) {
-		await connection.query('ROLLBACK');
-		console.log(`Transaction error -RollingBack DELEETS`, error);
-		res.sendStatus(500);
-	}finally {
-		connection.release()
-	}	 
- });
+
 
 module.exports = router;

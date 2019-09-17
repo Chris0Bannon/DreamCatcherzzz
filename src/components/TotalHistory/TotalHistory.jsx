@@ -32,7 +32,7 @@ viewHandler = (item) => {
 
 
   render() {
-    let date = 2;
+    let id = 0;
 
     return (
       <div>
@@ -48,9 +48,9 @@ viewHandler = (item) => {
             </TableHead>
             <TableBody>
               {this.props.reduxStore.userEntriesReducer.map((item, i) => {
-                if (item.date !== date) {
-                  date = item.date;
-                  console.log(date);
+                if (item.daily_entry_id !== id) {
+                  id = item.daily_entry_id;
+                  console.log(id);
                   return (
                     <TableRow key={i}>
                       <TableCell>{item.date}</TableCell>
@@ -77,6 +77,7 @@ viewHandler = (item) => {
                               type: "DELETE_IT",
                               payload: this.props.reduxStore.userEntriesReducer[i].daily_entry_id
                             });
+                            this.fetchUserEntries();
                           }}
                           variant="contained"
                           color="secondary"

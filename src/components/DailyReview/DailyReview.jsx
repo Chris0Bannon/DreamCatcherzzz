@@ -24,10 +24,7 @@ componentDidMount = () => {
     })
 }
   sendIt = () => {
-    // this.props.dispatch({
-    //   type: "ADD_HABIT_RESPONSES",
-    //   payload: this.state.habits
-    // });
+   
     this.props.dispatch({
         type: "ADD_SELF_REPORT_RESPONSES",
         payload: {
