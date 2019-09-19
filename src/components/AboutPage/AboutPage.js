@@ -9,7 +9,9 @@ const AboutPage = (props) => (
   <div>
     <div>
       <p>
-        This about page is for anyone to read!
+        Sleep is an incredibly important part of our lives, but we know so little about it!
+        This application is designed to help you identify trends in your habits that affect your sleep
+        and also trends in the quality of your sleep.
         Here is some cool sleepy time things!
       </p>
       <Button onClick = {() => {props.history.push('/home')}} variant = "contained" color = "primary">Back</Button>
