@@ -19,7 +19,12 @@ class TransitionSlide extends Component {
   render() {
     return (
       <div>
-        <h1>WELCOME TO THE TransitionSlide!!</h1>
+        <p>
+          You will now be shown a second series of prompts that are intended to
+          measure the quality of your sleep last night. If you are able to
+          respond to the prompts with an answer of true, your will likely have
+          had higher quality sleep than those who answered false.
+        </p>
         <Button
           onClick={() => this.props.history.push("/reports/1")}
           variant="contained"

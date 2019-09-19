@@ -37,6 +37,7 @@ componentDidMount = () => {
     this.props.dispatch({
         type: 'RESET_SELF_REPORT_RESPONSES'
     })
+    alert('Thank you for your submission.  You can view, edit, and delete your submissions in the history menu')
     this.props.history.push('/home')
   };
 
@@ -54,8 +55,8 @@ componentDidMount = () => {
             <Table>
               <TableHead>
                 <TableRow>
-                  <TableCell>Poop</TableCell>
-                  <TableCell>Pee</TableCell>
+                  <TableCell>Prompt</TableCell>
+                  <TableCell>Your Response</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>

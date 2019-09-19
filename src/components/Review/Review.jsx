@@ -26,10 +26,54 @@ fetchMostRecentUserEntry = () => {
         return (
           <div>
             <h1>Hello From Review</h1>
-            <Button variant = "contained" color = "secondary" onClick = {() => {this.props.history.push('/home')}} className = "tryItBtn">RETURN HOME</Button>
-            <Button style = {{background: 'radial-gradient(circle, rgba(50,210,232,0) 4%, rgba(9,224,254,1) 65%, rgba(45,24,78,1) 96%)'}} onClick = {this.fetchUserEntries}>VIEW YOUR ENTIRE HISTORY</Button>
-            <Button style = {{background: 'radial-gradient(circle, rgba(50,210,232,0) 4%, rgba(9,224,254,1) 65%, rgba(45,24,78,1) 96%)'}} onClick = {this.fetchMostRecentUserEntry}>EDIT YOUR MOST RECENT ENTRY</Button>
-            <Button variant = "contained" color = "secondary" onClick = {() => {this.props.history.push('/charts')}}>DATA VISUALIZATION</Button>
+            <div className="HomeButton">
+              <Button 
+                variant="contained"
+                color="secondary"
+                onClick={() => {
+                  this.props.history.push("/home");
+                }}
+                className="tryItBtn"
+              >
+                RETURN HOME
+              </Button>
+            </div>
+              <div className="HomeButton">
+            <Button
+             
+              style={{
+                background:
+                  "radial-gradient(circle, rgba(50,210,232,0) 4%, rgba(9,224,254,1) 65%, rgba(45,24,78,1) 96%)"
+              }}
+              onClick={this.fetchUserEntries}
+            >
+              VIEW YOUR ENTIRE HISTORY
+            </Button>
+            </div>
+              <div className="HomeButton">
+            <Button
+             
+              style={{
+                background:
+                  "radial-gradient(circle, rgba(50,210,232,0) 4%, rgba(9,224,254,1) 65%, rgba(45,24,78,1) 96%)"
+              }}
+              onClick={this.fetchMostRecentUserEntry}
+            >
+              EDIT YOUR MOST RECENT ENTRY
+            </Button>
+            </div>
+              <div className="HomeButton">
+            <Button
+              className="HomeButton"
+              variant="contained"
+              color="secondary"
+              onClick={() => {
+                this.props.history.push("/charts");
+              }}
+            >
+              DATA VISUALIZATION
+            </Button>
+            </div>
           </div>
         );
     }

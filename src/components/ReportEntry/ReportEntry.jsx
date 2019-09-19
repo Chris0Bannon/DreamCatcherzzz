@@ -39,6 +39,11 @@ getPreviousSelfReportPrompts = id => {
   };
 
 backHandler = event => {
+  if(this.props.reduxStore.selfReportResponses.length = 0){
+    console.log('no responses');
+    
+    this.props.history.push("/transition")
+  }else{
   console.log('you clicked back');
   this.getPreviousSelfReportPrompts();
   let action = {
@@ -47,7 +52,7 @@ backHandler = event => {
   this.props.dispatch(action);
   this.setState({
     value: 0,
-  })
+  })}
 };
 
   nextHandler = event => {

@@ -23,9 +23,13 @@ class DailyEntry extends Component {
       <div>
         <h1>Hello From Daily Entry</h1>
         <p>
-          You will be given a series of prompts. Select wether the prompt is
-          true or false and then click the submit key to advance to the next
-          question
+          In the upcoming slides you will be shown a series of prompts. Select
+          whether the prompt is true or false and then click the submit key to
+          advance to the next question. The first series of prompts will ask
+          whether or not you engaged in a certain behaviour that could
+          negatively affect the quality of your sleep. If you are able to
+          respond false any of those prompts you will be more likely to have
+          better sleep quality than those that report true.
         </p>
         <Button
           onClick={() => this.props.history.push("/home")}
