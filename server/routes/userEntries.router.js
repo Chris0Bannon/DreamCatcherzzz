@@ -38,7 +38,8 @@ router.get('/', (req, res) => {
 	SELECT * FROM "user_daily_entry"
 	JOIN "user_response_self_report" ON "user_daily_entry".id = "user_response_self_report".daily_entry_id
 	JOIN "self_report_prompts" ON "self_report_prompts".id = "user_response_self_report".self_report_id
-	WHERE "user_daily_entry".user_id =$1;`;
+	WHERE "user_daily_entry".user_id =$1
+	ORDER BY "date";`;
     pool.query(queryText, [req.user.id])
         .then((result) => {
             console.log(result);
@@ -76,5 +77,23 @@ router.put('/edit', (req, res) => {
 		console.log('made it to the catch', error);
 	}	
  })
+
+
+router.delete('/:id', (req, res) => {
+
+	
+	const queryText = `DELETE FROM "user_daily_entry"
+	WHERE "id" = $1;`
+	pool.query(queryText, [req.params.id])
+	.then((result) => {
+		res.sendStatus(200)
+	}).catch((error) => {
+		console.log('error in server side DELETE', error);
+		res.sendStatus
+	})
+})
+
+
+
 
 module.exports = router;

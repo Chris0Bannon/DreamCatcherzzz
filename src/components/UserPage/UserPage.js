@@ -18,7 +18,7 @@ const UserPage = (props) => (
     <Button onClick={() => props.history.push('/dailyEntry')} variant="contained" color="primary">DAILY ENTRY</Button>
     </div>
     <div className="HomeButton">
-    <Button onClick={() => props.history.push('/review')} variant="contained" color="primary">REVIEW RECENT</Button>
+    <Button onClick={() => props.history.push('/review')} variant="contained" color="primary">VIEW HISTORY</Button>
     </div>
     <div className="HomeButton">
     <Button  variant="contained" color="primary"

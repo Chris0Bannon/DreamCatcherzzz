@@ -14,9 +14,9 @@ class RecentSubmissionReview extends Component {
     this.props.history.push("/review");
   };
 
-  componentDidMount(){
+  componentDidMount() {
     this.fetchMostRecentUserEntry();
-  };
+  }
 
   fetchMostRecentUserEntry = () => {
     let action = {
@@ -26,9 +26,9 @@ class RecentSubmissionReview extends Component {
     this.props.history.push("/recentSubmissionReview");
   };
 
+ 
 
   render() {
-
     return (
       <div>
         <h1>Review your most recent submission in the table below!</h1>
@@ -42,7 +42,6 @@ class RecentSubmissionReview extends Component {
               </TableRow>
             </TableHead>
             <TableBody>
-              
               {this.props.reduxStore.mostRecentUserEntry.map((item, i) => {
                 return (
                   <TableRow key={i}>
