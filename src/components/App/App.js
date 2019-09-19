@@ -24,6 +24,7 @@ import DailyReview from '../DailyReview/DailyReview';
 import RecentSubmissionReview from '../RecentSubmissionReview/RecentSubmissionReview.jsx';
 import './App.css';
 import TotalHistory from '../TotalHistory/TotalHistory';
+import SelectedDateReview from '../SelectedDateReview/SelectedDateReview';
 // const style = {
 //   background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
 //   backgroundSize: "cover"
@@ -116,6 +117,10 @@ class App extends Component {
               <ProtectedRoute
               path = "/edit"
               component = {EditSingleItem}
+              />
+              <ProtectedRoute
+              path = "/selectedDate"
+              component = {SelectedDateReview}
               />
               <ProtectedRoute
               path = "/totalHistory"

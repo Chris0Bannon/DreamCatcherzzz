@@ -17,8 +17,6 @@ class TotalHistory extends Component {
       type: "FETCH_ALL_USER_ENTRIES"
     };
     this.props.dispatch(action);
-
-    this.props.history.push("/totalHistory");
   };
 
   componentDidMount() {
@@ -62,6 +60,7 @@ viewHandler = (item) => {
                               type: "VIEW_THIS_ITEM",
                               payload: i
                             });
+                            this.props.history.push("/selectedDate")
                           }}
                           variant="contained"
                           color="secondary"
@@ -78,6 +77,7 @@ viewHandler = (item) => {
                               payload: this.props.reduxStore.userEntriesReducer[i].daily_entry_id
                             });
                             this.fetchUserEntries();
+                             this.props.history.push("/totalHistory");
                           }}
                           variant="contained"
                           color="secondary"
