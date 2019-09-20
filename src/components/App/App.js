@@ -34,10 +34,14 @@ import Charts from '../Charts/Charts';
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: "#c158dc"
+      main: "#fff84c"
+      // main: "#c158dc"
     },
     secondary: {
       main: "#007ac1"
+    },
+    error: {
+      main: "#fff84c"
     },
     overides: {
       MuiMenuItem: {

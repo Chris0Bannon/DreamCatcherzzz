@@ -19,6 +19,7 @@ class TransitionSlide extends Component {
   render() {
     return (
       <div>
+        <h1 className = "Component-header">Great Work!</h1>
         <p>
           You will now be shown a second series of prompts that are intended to
           measure the quality of your sleep last night. If you are able to

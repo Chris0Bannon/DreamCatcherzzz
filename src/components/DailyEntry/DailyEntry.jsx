@@ -21,7 +21,7 @@ class DailyEntry extends Component {
   render() {
     return (
       <div>
-        <h1>Hello From Daily Entry</h1>
+        <h1 className="Component-header">Your Daily Entry</h1>
         <p>
           In the upcoming slides you will be shown a series of prompts. Select
           whether the prompt is true or false and then click the submit key to
@@ -31,20 +31,22 @@ class DailyEntry extends Component {
           respond false any of those prompts you will be more likely to have
           better sleep quality than those that report true.
         </p>
-        <Button
-          onClick={() => this.props.history.push("/home")}
-          variant="contained"
-          color="primary"
-        >
-          BACK
-        </Button>
-        <Button
-          onClick={() => this.props.history.push("/entry/1")}
-          variant="contained"
-          color="primary"
-        >
-          BEGIN
-        </Button>
+        <div className="HomeButton">
+          <Button
+            onClick={() => this.props.history.push("/home")}
+            variant="contained"
+            color="secondary"
+          >
+            BACK
+          </Button>
+          <Button
+            onClick={() => this.props.history.push("/entry/1")}
+            variant="contained"
+            color="primary"
+          >
+            BEGIN
+          </Button>
+        </div>
       </div>
     );
   }

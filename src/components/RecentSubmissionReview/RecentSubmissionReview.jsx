@@ -31,7 +31,9 @@ class RecentSubmissionReview extends Component {
   render() {
     return (
       <div>
-        <h1>Review your most recent submission in the table below!</h1>
+        <h1 className="Component-header">
+          Review your most recent submission in the table below!
+        </h1>
         <Paper className="prettyTable" component="div" overflow="scroll">
           <Table>
             <TableHead>
@@ -69,13 +71,15 @@ class RecentSubmissionReview extends Component {
             </TableBody>
           </Table>
         </Paper>
-        <Button
-          onClick={this.backHandler}
-          color="secondary"
-          variant="contained"
-        >
-          Return to History
-        </Button>
+        <div className="HomeButton">
+          <Button
+            onClick={this.backHandler}
+            color="secondary"
+            variant="contained"
+          >
+            Return to History
+          </Button>
+        </div>
       </div>
     );
   }

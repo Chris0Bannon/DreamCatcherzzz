@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button';
 // and then instead of `props.user.username` you could use `user.username`
 const UserPage = (props) => (
   <div>
-    <h1 id="welcome">
+    <h1 id="welcome" className="App-header">
       Welcome, { props.user.username }!
     </h1>
     <p>Your ID is: {props.user.id}</p>

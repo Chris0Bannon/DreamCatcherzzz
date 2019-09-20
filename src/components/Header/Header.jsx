@@ -79,7 +79,7 @@ setAnchorEl(null);
                       to="/review"
                       onClick={handleClose}
                     >
-                      Review
+                      History
                     </MenuItem>
                     <MenuItem
                       className="menu"

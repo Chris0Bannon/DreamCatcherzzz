@@ -3,7 +3,9 @@
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
-  color: rgb(245, 232, 47);
+  color: rgb(253, 253, 253); 
+  padding: 10px;
+  font-size: 1.2em;
 }
 
 .alert {
@@ -61,8 +63,23 @@ input {
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: rgb(245, 232, 47);
+  color: rgb(74, 11, 110);
   position: relative;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.Component-header {
+  min-height: 30px;  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5em;
+  color: rgb(74, 11, 110);
+  position: relative;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
 }
 .HomeButton {
   display: flex;
@@ -91,8 +108,10 @@ margin: 0;
 }
 
 html {
-  color: yellowgreen;
-  background: linear-gradient(0deg, rgba(34,193,195,1) 4%, rgba(123,9,254,1) 42%, rgba(45,24,78,1) 68%);
+
+  background: linear-gradient(0deg, rgba(2,0,36,1) 9%, rgba(89,45,209,1) 30%, rgba(3,187,240,1) 70%, rgba(255,255,255,1) 82%);
+  /* linear-gradient(0deg, rgba(2,0,36,1) 9%, rgba(89,45,209,1) 37%, rgba(3,187,240,1) 64%, rgba(255,255,255,1) 82%); */
+  /* linear-gradient(0deg, rgba(2,0,36,1) 18%, rgba(89,45,209,1) 37%, rgba(3,187,240,1) 64%, rgba(255,255,255,1) 79%); */
   /* background-image: url('../../images/dreamy.png'); */
   height: 100%;
   background-size: cover;
@@ -109,8 +128,38 @@ html {
 }
 
 .prettyTable {
-
+  justify-content: center;
   position: relative;
   overflow-y: scroll !important;
-  height: 400px;
+  height: 350px;
+  width: 97%;
+  margin-left: 5px;
+  
+}
+
+.someText{
+  min-height: 30px;  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1em;
+  color: rgb(52, 162, 226);
+  position: relative;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.trueOrFalse{
+   min-height: 30px;  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35em;
+  color: rgb(52, 162, 226);
+  position: relative;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
 }

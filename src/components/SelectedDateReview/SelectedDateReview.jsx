@@ -8,7 +8,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import Box from "@material-ui/core/Box";
-
+import Moment from "react-moment";
 class SelectedDateReview extends Component {
     state = {
 
@@ -16,50 +16,53 @@ class SelectedDateReview extends Component {
 
 render(){
   let id = this.props.reduxStore.viewOnceItem.daily_entry_id; 
-    return(
-        <div>
-            <h1>Hello From Selected Date Review</h1>
-           <Paper
-            className="prettyTable"
-            component="div"
-            overflow="scroll"
-           
-          >
-              <Table>
-                  <TableHead>
-                      <TableRow>
-                          <TableCell>
-                              Prompt
-                          </TableCell>
-                          <TableCell>
-                              Your Response
-                          </TableCell>
-                      </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {this.props.reduxStore.userEntriesReducer.map((item, i) => {
-                        console.log('id is', id);
-                        
-                            if(item.daily_entry_id == id){
-                                return (
-                                    <TableRow key = {i}>
-                                        <TableCell>
-                                            {item.habit_prompt_text}
-                                        </TableCell>
-                                        <TableCell>
-                                            {JSON.stringify(item.user_response)}
-                                        </TableCell>
+    return (
+      <div>
+        <h1 className="Component-header">
+          Review you submission for{" "}
+          <Moment format="YYYY/MM/DD">
+            {this.props.reduxStore.viewOnceItem.date}
+          </Moment>{" "}
+        </h1>
+        <Paper className="prettyTable" component="div" overflow="scroll">
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>Prompt</TableCell>
+                <TableCell>Your Response</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {this.props.reduxStore.userEntriesReducer.map((item, i) => {
+                console.log("id is", id);
 
-                                    </TableRow>
-                                )
-                            }
-                    })}
-                  </TableBody>
-              </Table>
-          </Paper>
-            <Button onClick ={() => {this.props.history.push("/totalHistory")}} variant = "contained" color = "secondary">Return to History</Button>
+                if (item.daily_entry_id == id) {
+                  return (
+                    <TableRow key={i}>
+                      <TableCell>{item.habit_prompt_text}</TableCell>
+                      <TableCell>
+                        {JSON.stringify(item.user_response)}
+                      </TableCell>
+                    </TableRow>
+                  );
+                }
+              })}
+            </TableBody>
+          </Table>
+        </Paper>
+        <div className = "HomeButton">
+          <Button
+            onClick={() => {
+              this.props.history.push("/totalHistory");
+            }}
+            variant="contained"
+            color="secondary"
+          >
+            Return to History
+          </Button>
         </div>
-    )
+      </div>
+    );
 }
 }
 const mapStoreToProps = reduxStore => {

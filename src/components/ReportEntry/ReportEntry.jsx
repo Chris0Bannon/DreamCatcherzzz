@@ -83,7 +83,7 @@ backHandler = event => {
       <div>
         {this.props.reduxStore.selfReportPrompt == "" &&
           this.props.history.push("/dailyReview")}
-        <h1>Welcome to the self report section</h1>
+        <h1 className = "Component-header">Sleep Quality Report</h1>
         <p>{this.props.reduxStore.selfReportPrompt.self_report_prompt_text}</p>
         <form onSubmit={this.nextHandler}>
           <RadioGroup

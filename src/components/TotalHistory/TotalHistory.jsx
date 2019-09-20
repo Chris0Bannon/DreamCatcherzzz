@@ -7,7 +7,7 @@ import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-
+import Moment from 'react-moment';
 
 
 class TotalHistory extends Component {
@@ -34,7 +34,7 @@ viewHandler = (item) => {
 
     return (
       <div>
-        <h1>Hello from TotalHistory!!</h1>
+        <h1 className="Component-header">View your history!</h1>
         <Paper className="prettyTable" component="div" overflow="scroll">
           <Table>
             <TableHead>
@@ -51,7 +51,9 @@ viewHandler = (item) => {
                   console.log(id);
                   return (
                     <TableRow key={i}>
-                      <TableCell>{item.date}</TableCell>
+                      <TableCell>
+                        <Moment format="YYYY/MM/DD">{item.date}</Moment>
+                      </TableCell>
                       <TableCell>
                         <Button
                           onClick={() => {
@@ -60,7 +62,7 @@ viewHandler = (item) => {
                               type: "VIEW_THIS_ITEM",
                               payload: i
                             });
-                            this.props.history.push("/selectedDate")
+                            this.props.history.push("/selectedDate");
                           }}
                           variant="contained"
                           color="secondary"
@@ -71,13 +73,17 @@ viewHandler = (item) => {
                       <TableCell>
                         <Button
                           onClick={() => {
-                            console.log(this.props.reduxStore.userEntriesReducer[i]);
+                            console.log(
+                              this.props.reduxStore.userEntriesReducer[i]
+                            );
                             this.props.dispatch({
                               type: "DELETE_IT",
-                              payload: this.props.reduxStore.userEntriesReducer[i].daily_entry_id
+                              payload: this.props.reduxStore.userEntriesReducer[
+                                i
+                              ].daily_entry_id
                             });
                             this.fetchUserEntries();
-                             this.props.history.push("/totalHistory");
+                            this.props.history.push("/totalHistory");
                           }}
                           variant="contained"
                           color="secondary"
@@ -92,6 +98,11 @@ viewHandler = (item) => {
             </TableBody>
           </Table>
         </Paper>
+        <div className="HomeButton">
+          <Button variant = "contained" color = "secondary" onClick ={() => {this.props.history.push('/review')}}>
+            Back
+          </Button>
+        </div>
       </div>
     );
   }

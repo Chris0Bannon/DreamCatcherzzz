@@ -66,7 +66,7 @@ this.setState({
     console.log("youclicked a button");
 
     if (this.state.value === 0) {
-      return alert("you gotta do something");
+      return alert("You must select either true or false to continue");
     } else {
       this.props.dispatch({
         type: "ADD_HABIT_RESPONSE",
@@ -91,7 +91,7 @@ this.setState({
       <div>
         {this.props.reduxStore.habitPrompt == "" &&
           this.props.history.push("/transition")}
-        <h1>Hello to Entry Item</h1>
+        <h1 className = "Component-header">Behaviour Report</h1>
         <p>{this.props.reduxStore.habitPrompt.habit_prompt_text}</p>
         <form onSubmit={this.nextHandler}>
           <RadioGroup

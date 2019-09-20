@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 import {Line} from 'react-chartjs-2';
 import Paper from '@material-ui/core/Paper';
-
+import Button from '@material-ui/core/Button';
 class Charts extends Component {
     render(){
 
@@ -35,11 +35,16 @@ class Charts extends Component {
 
         return (
           <div>
-            <h1>Hello from Charts</h1>
-            <p> hopefully chart.js goes here!</p>
+            <h1 className = "Component-header">Welcome to your charts!</h1>
+            <p className="App">You can view trends in your sleep habits in the chart below</p>
             <Paper>
               <Line ref="chart" data={data} />
             </Paper>
+            <div className ="HomeButton">
+              <Button onClick ={()=>{this.props.history.push("/review")}} variant= "contained" color="secondary">
+                BACK
+              </Button>
+            </div>
           </div>
         );
     }

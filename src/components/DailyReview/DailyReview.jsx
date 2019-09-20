@@ -44,14 +44,9 @@ componentDidMount = () => {
   render() {
     return (
       <div>
-        <h1>Hello From Daily Review</h1>
-        <Box overflow = "scroll">
-          <Paper
-            className="prettyTable"
-            component="div"
-            overflow="scroll"
-           
-          >
+        <h1 className="Component-header">Review Your Responses!</h1>
+        <Box overflow="scroll">
+          <Paper className="prettyTable" component="div" overflow="scroll">
             <Table>
               <TableHead>
                 <TableRow>
@@ -80,9 +75,11 @@ componentDidMount = () => {
             </Table>
           </Paper>
         </Box>
-        <Button onClick={this.sendIt} variant="contained" color="primary">
-          Submit
-        </Button>
+        <div className="HomeButton">
+          <Button onClick={this.sendIt} variant="contained" color="primary">
+            Submit
+          </Button>
+        </div>
       </div>
     );
   }
