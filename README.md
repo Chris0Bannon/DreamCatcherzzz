@@ -1,7 +1,9 @@
-# Prime Project
-This version uses React, Redux, Express, Passport, and PostgreSQL (a full list of dependencies can be found in `package.json`).
+# DreamCatcherzzz
+Dreamcatcherzzz is a mobile first web app designed to help users get better sleep by targeting habits that are highly associated with longer and more restful sleep.  Users make daily logs of their sleep related habits and sleep quality, and then can observe their  trends over time in easily readable graphics. 
 
-We **STRONGLY** recommend following these instructions carefully. It's a lot, and will take some time to set up, but your life will be much easier this way in the long run.
+The app is currently hosted at https://limitless-badlands-09164.herokuapp.com/#/home
+
+This version uses React, Redux, Express, Passport, and PostgreSQL (a full list of dependencies can be found in `package.json`).
 
 ## Download (Don't Clone) This Repository
 
@@ -19,15 +21,7 @@ Before you get started, make sure you have the following software installed on y
 
 ## Create database and table
 
-Create a new database called `prime_app` and create a `user` table:
-
-```SQL
-CREATE TABLE "user" (
-    "id" SERIAL PRIMARY KEY,
-    "username" VARCHAR (80) UNIQUE NOT NULL,
-    "password" VARCHAR (1000) NOT NULL
-);
-```
+Create a new database called `prime_app` and copy the code from the database.SQL into your database program
 
 If you would like to name your database something else, you will need to change `prime_app` to the name of your new database name in `server/modules/pool.js`
 
